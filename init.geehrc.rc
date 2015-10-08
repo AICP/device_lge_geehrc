@@ -14,9 +14,9 @@
 # limitations under the License.
 #
 
-import init.mako.usb.rc
-import init.mako_svelte.rc
-import init.mako_tiny.rc
+import init.geehrc.usb.rc
+import init.geehrc_svelte.rc
+import init.geehrc_tiny.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -38,7 +38,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
 on fs
-    mount_all ./fstab.mako
+    mount_all ./fstab.geehrc
     restorecon_recursive /persist
 
 on early-boot
@@ -187,7 +187,15 @@ on post-fs-data
     rm /data/local/tmp/adreno_config.txt
 
     # LED On/Off synchronization
-    chown system system /sys/class/leds/red/device/lock
+    chown system system /sys/class/leds/led:red/device/lock
+
+    chmod 644 /sys/class/leds/button-backlight/brightness
+    chmod 644 /sys/class/leds/led:red/brightness
+    chmod 644 /sys/class/leds/led:green/brightness
+
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/led:red/brightness
+    chown system system /sys/class/leds/led:green/brightness
 
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 2770 root system
@@ -205,14 +213,10 @@ on post-fs-data
     write /sys/module/pm_8x60/modes/cpu2/power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu3/power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
-    write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
@@ -256,7 +260,7 @@ service rmt_storage /system/bin/rmt_storage
     user root
     group system
 
-service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
+service hciattach /system/bin/sh /system/etc/init.geehrc.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
@@ -377,7 +381,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service wcnss_init /system/bin/sh /system/etc/init.mako.wifi.sh
+service wcnss_init /system/bin/sh /system/etc/init.geehrc.wifi.sh
     class late_start
     user system
     group system wifi
@@ -407,5 +411,23 @@ service diag_mdlog /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
+service fetch-swv /system/bin/fetch-swv
+    class late_start
+    oneshot
+
 # on property:gsm.sim.state=READY
 #    start diag_mdlog
+
+# inform hdmi driver that boot completed
+on property:dev.bootcomplete=1
+    write /sys/devices/virtual/graphics/fb1/hdmi_boot_completed 1
+
+# external block api
+on property:sys.hdmi.block=block
+    write /sys/devices/virtual/graphics/fb1/hdmi_external_block block
+
+on property:sys.hdmi.block=unblock
+    write /sys/devices/virtual/graphics/fb1/hdmi_external_block unblock
+
+on property:sys.hdmi.block=internal_block
+    write /sys/devices/virtual/graphics/fb1/hdmi_external_block internal_block
