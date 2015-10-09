@@ -39,9 +39,6 @@ PRODUCT_PACKAGES += \
 	lights.geehrc
 
 PRODUCT_PACKAGES += \
-        camera.geehrc
-
-PRODUCT_PACKAGES += \
     charger_res_images
 
 LOCAL_KERNEL := device/lge/geehrc/kernel
