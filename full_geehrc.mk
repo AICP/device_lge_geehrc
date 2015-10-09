@@ -38,7 +38,7 @@ PRODUCT_DEVICE := geehrc
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on Geehrc
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/lge/geehrc/device.mk)
