@@ -15,8 +15,12 @@ allow rmt block_device:dir r_dir_perms;
 # Needed for ioprio_set(IOPRIO_WHO_PROCESS, 0, IOPRIO_CLASS_RT << IOPRIO_CLASS_SHIFT);
 allow rmt self:capability sys_admin;
 
+allow rmt rmt_block_device:blk_file { getattr rw_file_perms };
+
 # Allow shared memory logging access
 allow rmt shared_log_device:chr_file rw_file_perms;
+
+allow rmt block_device:dir search;
 
 allow rmt self:socket create_socket_perms;
 allow rmt cgroup:dir { create add_name };
@@ -29,3 +33,7 @@ allow rmt uio_device:chr_file rw_file_perms;
 
 unix_socket_connect(rmt, property, init)
 allow rmt ctl_rmt_prop:property_service set;
+
+allow rmt self:process execmem;
+allow rmt self:capability dac_override;
+

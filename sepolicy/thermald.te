@@ -6,7 +6,7 @@ type thermald_exec, exec_type, file_type;
 init_daemon_domain(thermald)
 
 # DAC overrides
-allow thermald self:capability dac_override;
+allow thermald self:capability { dac_override fsetid };
 auditallow thermald self:capability dac_override;
 
 allow thermald self:socket create_socket_perms;
@@ -36,3 +36,5 @@ allow thermald sysfs:file write;
 # Connect to mpdecision.
 allow thermald mpdecision_socket:dir r_dir_perms;
 unix_socket_connect(thermald, mpdecision, mpdecision)
+
+allow thermald self:process execmem;
