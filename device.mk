@@ -277,5 +277,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.locale.language=ru \
+    ro.product.locale.region=RU \
+    persist.sys.timezone=Asia/Irkutsk
+
+ADDITIONAL_DEFAULT_PROPERTIES := \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    persist.service.adb.enable=1 \
+    ro.build.display.id=xyyx_build
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
