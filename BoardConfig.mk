@@ -96,6 +96,9 @@ TARGET_NO_RPC := true
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/geehrc
 
+#Asserts
+TARGET_OTA_ASSERT_DEVICE := gee,geeb,geehrc,e975,geehrc_4g_spr,geespr,ls970,geehrc4g,geehrc4g_spr_us,geebus,e970,e973,e971,geeb_att_us
+
 BOARD_SEPOLICY_DIRS += \
        device/lge/geehrc/sepolicy
 
