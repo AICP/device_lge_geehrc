@@ -41,11 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-LOCAL_KERNEL := device/lge/geehrc/kernel
-
-PRODUCT_COPY_FILES := \
-	$(LOCAL_KERNEL):kernel
-
 PRODUCT_COPY_FILES += \
 	device/lge/geehrc/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/lge/geehrc/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
@@ -62,6 +57,8 @@ PRODUCT_COPY_FILES += \
 	device/lge/geehrc/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
+        device/lge/geehrc/initlogo.rle:root/initlogo.rle888 \
+        device/lge/geehrc/configs/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
 	device/lge/geehrc/init.geehrc.rc:root/init.geehrc.rc \
 	device/lge/geehrc/init.geehrc.usb.rc:root/init.geehrc.usb.rc \
 	device/lge/geehrc/fstab.geehrc:root/fstab.geehrc \
