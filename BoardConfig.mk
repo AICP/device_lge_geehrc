@@ -25,6 +25,10 @@ TARGET_CPU_VARIANT := krait
 
 TARGET_NO_BOOTLOADER := true
 
+KERNEL_TOOLCHAIN_PREFIX:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin/arm-eabi-
+TARGET_KERNEL_CONFIG := gee_defconfig	
+TARGET_KERNEL_SOURCE := kernel/lge/geehrc
+
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geehrc lpj=67677 user_debug=31 androidboot.selinux=permissive
