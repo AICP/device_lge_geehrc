@@ -19,6 +19,8 @@ cat patches/1.nfc.patch | patch -d $DSTDIR/packages/apps/Nfc -p1 -N -r -
 echo "${grn}Applying camera patch${txtrst}"
 cat patches/2.camera.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
 
+echo "${grn}Applying relocs patch${txtrst}"
+cat patches/3.relocs.patch | patch -d $DSTDIR/bionic/ -p1 -N -r -
 #cd $DSTDIR
 
 #find . -name '*.orig' -delete
