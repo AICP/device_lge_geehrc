@@ -243,7 +243,7 @@ PRODUCT_PACKAGES += \
 	p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
-	power.msm8960
+	power.geehrc
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
