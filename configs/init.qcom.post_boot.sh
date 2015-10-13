@@ -20,10 +20,10 @@
     echo "intellimm" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
     echo "intellimm" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
     echo "intellimm" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
-    echo 162000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    echo 162000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-    echo 162000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
-    echo 162000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+    echo 270000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    echo 270000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+    echo 270000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+    echo 270000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
     echo 918000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     echo 918000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
     echo 918000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
