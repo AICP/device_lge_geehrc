@@ -163,13 +163,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #Upto 3 layers can go through overlays
 PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
-# Force older camera API.
-PRODUCT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=1
-
 PRODUCT_CHARACTERISTICS := nosdcard
-
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PACKAGES += \
 	librs_jni \
