@@ -29,6 +29,10 @@ PRODUCT_PACKAGES += \
     Stk \
     Busybox \
     messaging \
-    Camera2
+    Camera2 \
+    Calendar \
+    DeskClock \
+    Email
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=frank_geehrc-marshmallow
