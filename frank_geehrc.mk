@@ -28,6 +28,7 @@ PRODUCT_PACKAGES += \
     Launcher2 \
     Stk \
     Busybox \
-    messaging
+    messaging \
+    Camera2
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=frank_geehrc-marshmallow
