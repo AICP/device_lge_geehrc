@@ -21,6 +21,9 @@ cat patches/2.camera.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
 
 echo "${grn}Applying relocs patch${txtrst}"
 cat patches/3.relocs.patch | patch -d $DSTDIR/bionic/ -p1 -N -r -
+
+echo "${grn}Applying build patch${txtrst}"
+cat patches/4.build.patch | patch -d $DSTDIR/build/ -p1 -N -r -
 #cd $DSTDIR
 
 #find . -name '*.orig' -delete
