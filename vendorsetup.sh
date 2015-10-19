@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo frank_geehrc-userdebug
+add_lunch_combo chroma_geehrc-userdebug

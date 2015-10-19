@@ -1,21 +1,20 @@
+From 7ed0f75c32d1d70c12bff97ce2800749b1b1f6f8 Mon Sep 17 00:00:00 2001
+From: xyyx <xyyx@mail.ru>
+Date: Mon, 19 Oct 2015 18:14:29 +0800
+Subject: [PATCH] Fix for allow override of device asserts
+
+---
+ core/Makefile                            |    1 +
+ tools/releasetools/edify_generator.py    |    2 +-
+ tools/releasetools/ota_from_target_files | 1696 +-----------------------------
+ 3 files changed, 3 insertions(+), 1696 deletions(-)
+ mode change 100755 => 120000 tools/releasetools/ota_from_target_files
+
 diff --git a/core/Makefile b/core/Makefile
-index 5ab7a0b..3e4b293 100644
+index d10fc46..31618ee 100644
 --- a/core/Makefile
 +++ b/core/Makefile
-@@ -1569,6 +1569,12 @@ INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
- 
- $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
- 
-+ifeq ($(TARGET_OTA_ASSERT_DEVICE),)
-+    $(INTERNAL_OTA_PACKAGE_TARGET): override_device := auto
-+else
-+    $(INTERNAL_OTA_PACKAGE_TARGET): override_device := $(TARGET_OTA_ASSERT_DEVICE)
-+endif
-+
- $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
- 	@echo -e ${CL_YLW}"Package OTA:"${CL_RST}" $@"
- 	$(hide) PATH=$(foreach p,$(INTERNAL_USERIMAGES_BINARY_PATHS),$(p):)$$PATH MKBOOTIMG=$(MKBOOTIMG) \
-@@ -1576,6 +1582,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
+@@ -1584,6 +1584,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
  	   --block \
  	   -p $(HOST_OUT) \
  	   -k $(KEY_CERT_PAIR) \
@@ -24,26 +23,18 @@ index 5ab7a0b..3e4b293 100644
  	   $(BUILT_TARGET_FILES_PACKAGE) $@
  
 diff --git a/tools/releasetools/edify_generator.py b/tools/releasetools/edify_generator.py
-index 28b5d88..464d300 100644
+index e9123ef..2fd67ed 100644
 --- a/tools/releasetools/edify_generator.py
 +++ b/tools/releasetools/edify_generator.py
-@@ -117,10 +117,12 @@ class EdifyGenerator(object):
- 
+@@ -118,7 +118,7 @@ class EdifyGenerator(object):
    def AssertDevice(self, device):
      """Assert that the device identifier is the given string."""
--    cmd = ('getprop("ro.product.device") == "%s" || '
--           'abort("This package is for \\"%s\\" devices; '
--           'this is a \\"" + getprop("ro.product.device") + "\\".");') % (
--               device, device)
-+    cmd = ('assert(' +
+     cmd = ('assert(' +
+-           ' || \0'.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
 +           ' || '.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
-+                         % (i, i) for i in device.split(",")]) +
-+           ' || abort("This package is for device: %s; ' +
-+           'this device is " + getprop("ro.product.device") + ".");' +
-+           ');') % device
-     self.script.append(cmd)
- 
-   def AssertSomeBootloader(self, *bootloaders):
+                          % (i, i) for i in device.split(",")]) +
+            ' || abort("This package is for device: %s; ' +
+            'this device is " + getprop("ro.product.device") + ".");' +
 diff --git a/tools/releasetools/ota_from_target_files b/tools/releasetools/ota_from_target_files
 deleted file mode 100755
 index 1914f01..0000000
@@ -1747,61 +1738,12 @@ index 1914f01..0000000
 -    common.Cleanup()
 diff --git a/tools/releasetools/ota_from_target_files b/tools/releasetools/ota_from_target_files
 new file mode 120000
-index 0000000..bc751a7
+index 0000000..8e897a8
 --- /dev/null
 +++ b/tools/releasetools/ota_from_target_files
 @@ -0,0 +1 @@
 +ota_from_target_files.py
 \ No newline at end of file
-diff --git a/tools/releasetools/ota_from_target_files.py b/tools/releasetools/ota_from_target_files.py
-index 058c46a..1045fdd 100755
---- a/tools/releasetools/ota_from_target_files.py
-+++ b/tools/releasetools/ota_from_target_files.py
-@@ -84,6 +84,9 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
-       Specifies the number of worker-threads that will be used when
-       generating patches for incremental updates (defaults to 3).
- 
-+  --override_device <device>
-+      Override device-specific asserts. Can be a comma-separated list.
-+
- """
- 
- import sys
-@@ -122,6 +125,7 @@ OPTIONS.updater_binary = None
- OPTIONS.oem_source = None
- OPTIONS.fallback_to_full = True
- OPTIONS.full_radio = False
-+OPTIONS.override_device = 'auto'
- 
- def MostPopularKey(d, default):
-   """Given a dict, return the key corresponding to the largest
-@@ -401,7 +405,10 @@ def SignOutput(temp_zip_name, output_zip_name):
- def AppendAssertions(script, info_dict, oem_dict=None):
-   oem_props = info_dict.get("oem_fingerprint_properties")
-   if oem_props is None or len(oem_props) == 0:
--    device = GetBuildProp("ro.product.device", info_dict)
-+    if OPTIONS.override_device == "auto":
-+      device = GetBuildProp("ro.product.device", info_dict)
-+    else:
-+      device = OPTIONS.override_device    
-     script.AssertDevice(device)
-   else:
-     if oem_dict is None:
-@@ -1549,6 +1556,8 @@ def main(argv):
-       OPTIONS.updater_binary = a
-     elif o in ("--no_fallback_to_full",):
-       OPTIONS.fallback_to_full = False
-+    elif o in ("--override_device"):
-+      OPTIONS.override_device = a
-     else:
-       return False
-     return True
-@@ -1572,7 +1581,7 @@ def main(argv):
-                                  "oem_settings=",
-                                  "verify",
-                                  "no_fallback_to_full",
--                             ], extra_option_handler=option_handler)
-+                             "override_device="], extra_option_handler=option_handler)
- 
-   if len(args) != 2:
-     common.Usage(__doc__)
+-- 
+1.8.1.2
+
