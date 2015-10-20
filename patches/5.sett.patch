@@ -1,0 +1,27 @@
+diff --git a/src/com/android/settings/notificationlight/LightSettingsDialog.java b/src/com/android/settings/notificationlight/LightSettingsDialog.java
+index ad3b7eb..19ccfe0 100644
+--- a/src/com/android/settings/notificationlight/LightSettingsDialog.java
++++ b/src/com/android/settings/notificationlight/LightSettingsDialog.java
+@@ -242,7 +242,11 @@ public class LightSettingsDialog extends AlertDialog implements
+ 
+     @SuppressWarnings("unchecked")
+     public int getPulseSpeedOn() {
+-        return ((Pair<String, Integer>) mPulseSpeedOn.getSelectedItem()).second;
++        if (mPulseSpeedOn.isEnabled()) {
++            return ((Pair<String, Integer>) mPulseSpeedOn.getSelectedItem()).second;
++        } else {
++            return 1;
++        }
+     }
+ 
+     @SuppressWarnings("unchecked")
+@@ -294,6 +298,9 @@ public class LightSettingsDialog extends AlertDialog implements
+         builder.setLights(color, speedOn, speedOff);
+         builder.setExtras(b);
+ 
++        // Set a notification icon
++        builder.setSmallIcon(R.drawable.ic_settings_24dp);
++
+         mNotificationManager.notify(1, builder.build());
+     }
+ 

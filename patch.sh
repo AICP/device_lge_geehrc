@@ -24,6 +24,13 @@ cat patches/3.relocs.patch | patch -d $DSTDIR/bionic/ -p1 -N -r -
 
 echo "${grn}Applying build patch${txtrst}"
 cat patches/4.build.patch | patch -d $DSTDIR/build/ -p1 -N -r -
+
+echo "${grn}Applying frameworks lights patch${txtrst}"
+cat patches/6.frame.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
+
+echo "${grn}Applying Settings patch${txtrst}"
+cat patches/5.sett.patch | patch -d $DSTDIR/packages/apps/Settings -p1 -N -r -
+
 #cd $DSTDIR
 
 #find . -name '*.orig' -delete
