@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     Camera2 \
     Calendar \
     DeskClock \
+    LockClock \
     Email
 
 
