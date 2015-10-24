@@ -28,11 +28,6 @@ DEVICE_PACKAGE_OVERLAYS := device/lge/geehrc/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-LOCAL_KERNEL := device/lge/geehrc/kernel
-
-PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel
-
 PRODUCT_PACKAGES := \
     libwpa_client \
     hostapd \
