@@ -114,6 +114,10 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag
 
+# OTA package
+PRODUCT_PACKAGES += \
+    OTAUpdates
+
 # NFCEE access control
 NFCEE_ACCESS_PATH := device/lge/geehrc/nfc/nfcee_access.xml
 
@@ -146,6 +150,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false
 
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.ota.romname=Nitrogen-OS \
+        ro.ota.version=$(shell date +"%d%m%y") \
+        ro.ota.manifest=https://romhut.com/roms/nitrogen-os/ota.xml
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
