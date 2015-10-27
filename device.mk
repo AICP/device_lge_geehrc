@@ -144,11 +144,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #        while switching new audio HAL from legacy HAL
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.handset.mic.type=analog \
-+	persist.audio.dualmic.config=false \
+	persist.audio.dualmic.config=false \
 	persist.audio.fluence.voicecall=true \
 	persist.audio.handset.mic=dmic \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false
+
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.media.enc.jpeg.quality=100 \
+        ro.media.dec.jpeg.memcap=8000000 \
+        ro.media.enc.hprof.vid.bps=8000000 \
+        ro.config.vc_call_vol_steps=20 \
+        ro.config.media_vol_steps=30 \
+        ro.telephony.call_ring.delay=0 \
+        ring.delay=0 \
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.ota.romname=Nitrogen-OS \
