@@ -196,6 +196,10 @@ on post-fs-data
     chown system system /sys/class/leds/led:red/brightness
     chown system system /sys/class/leds/led:green/brightness
 
+    chown root system /sys/devices/virtual/input/lge_touch/keypad_enable
+    chmod 0664 /sys/devices/virtual/input/lge_touch/keypad_enable
+    restorecon /sys/devices/virtual/input/lge_touch/keypad_enable
+
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 2770 root system
 
