@@ -163,8 +163,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.romname=Nitrogen-OS \
-    ro.ota.version=$(shell date +"%d%m%y") \
-    ro.ota.manifest=https://romhut.com/roms/nitrogen-os/ota.xml
+    ro.ota.version=$(shell date +"%Y%m%d") \
+    ro.ota.manifest=http://xyyx.ga/nitrogen-os/nitrogen.xml
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
