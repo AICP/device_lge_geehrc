@@ -157,7 +157,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.dec.jpeg.memcap=8000000 \
     ro.media.enc.hprof.vid.bps=8000000 \
     ro.config.vc_call_vol_steps=20 \
-    ro.config.media_vol_steps=30 \
+    ro.config.media_vol_steps=20 \
     ro.telephony.call_ring.delay=0 \
     ring.delay=0 \
 
