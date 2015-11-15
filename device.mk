@@ -288,8 +288,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES := \
     ro.adb.secure=0 \
     ro.secure=0 \
-    persist.service.adb.enable=1 \
-    ro.build.display.id=nitrogen_build
+    persist.service.adb.enable=1
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
