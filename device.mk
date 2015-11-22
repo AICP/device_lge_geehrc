@@ -263,7 +263,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false
+    dalvik.vm.dex2oat-swap=false \
+    dalvik.vm.image-dex2oat-filter=speed
 
 ifeq ($(findstring tiny, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
