@@ -59,6 +59,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/initlogo.rle:root/initlogo.rle888 \
     $(LOCAL_PATH)/configs/init.qcom.post_boot.sh:system/bin/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/configs/95-postboot.sh:system/addon.d/95-postboot.sh \
     $(LOCAL_PATH)/init.geehrc.rc:root/init.geehrc.rc \
     $(LOCAL_PATH)/init.geehrc.usb.rc:root/init.geehrc.usb.rc \
     $(LOCAL_PATH)/fstab.geehrc:root/fstab.geehrc \
