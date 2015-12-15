@@ -40,8 +40,5 @@
 
     <!-- Doze: should the pickup sensor be used as a pulse signal? -->
     <bool name="doze_pulse_on_pick_up">true</bool>
-
-    <!-- Use alternative way to blur lockscreen -->
-    <bool name="blur_need_alternative_way">true</bool>
 </resources>
 
