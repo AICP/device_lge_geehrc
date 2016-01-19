@@ -154,6 +154,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.lowlatency.rec=false
 
+# Skip HDCP
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.wfd.nohdcp=1
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.enc.jpeg.quality=100 \
