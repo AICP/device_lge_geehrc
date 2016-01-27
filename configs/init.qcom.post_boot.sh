@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # Fast Charge
-echo 1 > /sys/kernel/fast_charge/force_fast_charge
+    echo 1 > /sys/kernel/fast_charge/force_fast_charge
 
 # CPU HOTPLUG
     # Disable mpdecision
@@ -13,7 +13,7 @@ echo 1 > /sys/kernel/fast_charge/force_fast_charge
 
 # GPU
     # Set max gpu freq to 320 mhz (disable by default)
-    echo 320000000 > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
+#    echo 320000000 > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
 	
 # GOVERNOR
     echo 1 > /sys/devices/system/cpu/cpu1/online
@@ -27,10 +27,10 @@ echo 1 > /sys/kernel/fast_charge/force_fast_charge
     echo 270000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
     echo 270000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
     echo 270000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
-    echo 918000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    echo 918000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
-    echo 918000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-    echo 918000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+    echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    echo 1512000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+    echo 1512000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+    echo 1512000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
 
 # UNDERVOLT
     #echo '-50000' > /sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table
