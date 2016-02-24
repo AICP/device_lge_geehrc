@@ -21,11 +21,6 @@
 
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES := \
@@ -191,14 +186,6 @@ PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck
-
-PRODUCT_PACKAGES += \
     libgenlock \
     liboverlay \
     hwcomposer.msm8960 \
@@ -283,8 +270,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.interface=wlan0
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
