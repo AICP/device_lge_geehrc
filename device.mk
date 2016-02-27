@@ -165,7 +165,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=20 \
     ro.config.media_vol_steps=20 \
     ro.telephony.call_ring.delay=0 \
-    ring.delay=0 \
+    ring.delay=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.romname=Nitrogen-OS \
