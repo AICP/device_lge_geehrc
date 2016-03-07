@@ -121,6 +121,7 @@ MALLOC_IMPL := dlmalloc
 # Uncomment it for TWRP build. Contains EFS partition for backup
 #TARGET_RECOVERY_FSTAB = device/lge/geehrc/recovery.fstab
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/leds/button-backlight/brightness
 TW_MAX_BRIGHTNESS := 250
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
