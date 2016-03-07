@@ -62,6 +62,8 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
 
+TARGET_KERNEL_HAVE_NTFS := true
+
 BOARD_EGL_CFG := device/lge/geehrc/egl.cfg
 
 #BOARD_USES_HGL := true
