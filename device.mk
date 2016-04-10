@@ -56,6 +56,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
     $(LOCAL_PATH)/initlogo.rle:root/initlogo.rle888 \
     $(LOCAL_PATH)/configs/init.qcom.post_boot.sh:system/bin/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/configs/95-postboot.sh:system/addon.d/95-postboot.sh \

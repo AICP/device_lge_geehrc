@@ -116,8 +116,6 @@ EXTENDED_FONT_FOOTPRINT := true
 MALLOC_IMPL := dlmalloc
 
 #TWRP config
-# Uncomment it for TWRP build. Contains EFS partition for backup
-#TARGET_RECOVERY_FSTAB = device/lge/geehrc/recovery.fstab
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/leds/button-backlight/brightness
 TW_MAX_BRIGHTNESS := 250
