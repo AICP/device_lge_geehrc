@@ -1,8 +1,5 @@
 #!/system/bin/sh
 
-# Fast Charge
-    echo 1 > /sys/kernel/fast_charge/force_fast_charge
-
 # CPU HOTPLUG
     # Disable mpdecision
     stop mpdecision
