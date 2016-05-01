@@ -13,13 +13,14 @@
 #    echo 320000000 > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
 	
 # GOVERNOR
+    echo 1 > /sys/devices/system/cpu/cpu0/online
     echo 1 > /sys/devices/system/cpu/cpu1/online
     echo 1 > /sys/devices/system/cpu/cpu2/online
     echo 1 > /sys/devices/system/cpu/cpu3/online
-    echo "smartmax" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    echo "smartmax" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-    echo "smartmax" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
-    echo "smartmax" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+    echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    echo "interactive" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+    echo "interactive" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+    echo "interactive" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
     echo 270000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     echo 270000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
     echo 270000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
