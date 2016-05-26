@@ -1,0 +1,12 @@
+[
+  {
+    "repository": "AICP/kernel_lge_geehrc",
+    "target_path": "kernel/lge/geehrc",
+    "branch":      "mm6.0"
+  },
+  {
+    "repository": "AICP/proprietary_vendor_lge",
+    "target_path": "vendor/lge",
+    "branch":      "mm6.0"
+  }
+]
