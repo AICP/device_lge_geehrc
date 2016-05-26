@@ -117,11 +117,6 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag
 
-# OTA package
-PRODUCT_PACKAGES += \
-    OTAUpdates \
-    libbypass
-
 # NFCEE access control
 NFCEE_ACCESS_PATH := $(LOCAL_PATH)/nfc/nfcee_access.xml
 
