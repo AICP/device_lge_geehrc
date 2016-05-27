@@ -57,7 +57,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab \
-    $(LOCAL_PATH)/initlogo.rle:root/initlogo.rle888 \
     $(LOCAL_PATH)/configs/init.qcom.post_boot.sh:system/bin/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/configs/95-postboot.sh:system/addon.d/95-postboot.sh \
     $(LOCAL_PATH)/init.geehrc.rc:root/init.geehrc.rc \
@@ -162,11 +161,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.media_vol_steps=20 \
     ro.telephony.call_ring.delay=0 \
     ring.delay=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ota.romname=Nitrogen-OS \
-    ro.ota.version=$(shell date +"%Y%m%d") \
-    ro.ota.manifest=http://xyyx-dev.ru/nitrogen-os/nitrogen.xml
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
