@@ -1,3 +1,4 @@
+Copyright 2015 - The Nitrogen Project
 
 Device configuration for LGE Optimus G (International)
 =====================================
