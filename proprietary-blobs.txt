@@ -150,7 +150,6 @@
 /system/vendor/lib/librs_adreno.so
 /system/vendor/lib/librs_adreno_sha1.so
 /system/vendor/lib/libsc-a3xx.so
-/system/vendor/lib/libuiblur.so
 /system/lib/libsensor1.so
 /system/lib/libsensor_reg.so
 /system/lib/libsensor_user_cal.so

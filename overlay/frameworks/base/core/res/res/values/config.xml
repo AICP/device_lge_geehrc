@@ -362,9 +362,4 @@
     <integer name="config_multiuserMaximumUsers">4</integer>
     <!-- Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
-
-    <!-- Support in Surfaceflinger for blur layers.
-         NOTE: This requires additional hardware-specific code. -->
-    <bool name="config_ui_blur_enabled">true</bool>
-
 </resources>
